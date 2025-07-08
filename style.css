@@ -1,3 +1,66 @@
 * {
     font-family: 'Roboto', sans-serif;
 }
+
+body {
+    background-color: #d0f4de ;
+    height: 100vh;
+    display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+#container {
+    background-color: #fcf6bd;
+    padding: 20px;
+    display: none;
+}
+
+#container > .block {
+    padding: 20px;
+}
+
+.block {
+    color: black;
+}
+
+.block:first-child{
+    background-color: #d0f4de;
+    color: black;
+
+}
+
+.information-container {
+    display: flex;
+}
+
+.info {
+    margin-left: 5px;
+}
+
+ #location {
+    font-weight: bold;
+    font-size: 22px;
+ }
+
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: #e4c1f9;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
+  

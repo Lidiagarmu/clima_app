@@ -28,8 +28,20 @@ const setWeatherData = data => {
         document.getElementById(key).textContent = weatherData[key];
 
     })
+
+    cleanUp();
     
 }
+
+    //función para limpiar
+    const cleanUp = () => {
+        let container = document.getElementById('container');
+        let loader = document.getElementById('loader');
+
+        loader.style.display = 'none';
+        container.style.display = 'flex';
+        
+    }
 
     // función para obtener la fecha actual
     const getDate = () => {

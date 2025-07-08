@@ -4,23 +4,55 @@
                 <meta charset="UTF-8">
                 <title>Clima</title>
                 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-                <llnk href="style.css" rel="stylesheet" type="text/css">
+                <link href="style.css" rel="stylesheet" type="text/css">
             </head> 
             
  <body onload="onLoad()">
-        <div id="container">
-            <div id="location"></div>
-            <div id="description"></div>
-            <div id="humidity"></div>
-            <div id="pressure"></div>
-            <div id="temperature"></div>
-            <div id="date"></div>
+      
+   
+    <div id="container">
+        
+         <!--BLOQUE INFO LUGAR, FECHA Y DESCRIPCIÓN-->
 
-        </div>
+        
+        <div class="block"> 
+                <div id="location"></div>
+                <div id="date"></div>
+                <div id="description"></div> 
+            </div>
+
+         
+
+            <!--BLOQUE INFO TEMPERATURA, PRESIÓN Y HUMEDAD-->
+         
+            <div class="block"> 
+    
+                 <div class="information-container">
+                    Temperatura
+                     <div class="info" id="temperature"></div>
+                </div>
+
+                 <div class="information-container">
+                    Presión
+                     <div class="info" id="pressure"></div>
+                    
+                </div>
+
+                <div class="information-container">
+                    Humedad
+                     <div class="info" id="humidity"></div>
+
+                </di
+               
+               
+               
+            </div>
+        
+    </div>
                 
 
     
-
+    <span id="loader" class="loader">Cargando...</span>
     <script src="script.js"></script>
  </body>
 
