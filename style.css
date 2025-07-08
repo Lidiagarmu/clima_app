@@ -1,66 +1,65 @@
 * {
-    font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
-body {
-    background-color: #d0f4de ;
-    height: 100vh;
-    display: flex;
-     justify-content: center;
-     align-items: center;
+body, html {
+  height: 100%;
+  background: linear-gradient(to top, #a2d4f7, #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #container {
-    background-color: #fcf6bd;
-    padding: 20px;
-    display: none;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
 }
 
-#container > .block {
-    padding: 20px;
+.weather-card {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 40px 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 95%;
 }
 
-.block {
-    color: black;
+.location {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
-.block:first-child{
-    background-color: #d0f4de;
-    color: black;
-
+.date {
+  font-size: 18px;
+  margin-bottom: 15px;
 }
 
-.information-container {
-    display: flex;
+.description {
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 
 .info {
-    margin-left: 5px;
+  margin-top: 15px;
+  font-size: 16px;
+  line-height: 1.8;
 }
 
- #location {
-    font-weight: bold;
-    font-size: 22px;
- }
-
-
 .loader {
-    width: 48px;
-    height: 48px;
-    border: 5px solid #FFF;
-    border-bottom-color: #e4c1f9;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-    }
-
-    @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-    } 
-  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  font-weight: 500;
+}

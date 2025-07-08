@@ -1,55 +1,122 @@
-
 const API_KEY = '1cb8ac430389826f01e4010a036d0b67';
 
+const fetchData = position => {
+  const { latitude, longitude } = position.coords;
 
-// Llamada a la WEATHER API
-const fetchData = position  => {
+  fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${latitude}&lon=${longitude}&appid=${API_KEY}`)
+    .then(response => response.json())
+    .then(data => setWeatherData(data));
+};
 
-    const { latitude, longitude} = position.coords;
-    fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${latitude}&lon=${longitude}&appid=${API_KEY}`)
-        .then(response => response.json())
-        .then(data =>  setWeatherData(data)) 
-}
-
-//  función para obtener los datos 
 const setWeatherData = data => {
-    console.log(data);
-    const weatherData = {
-        location: data.name,
-        description: data.weather[0].main,
-        humidity: data.main.humidity,
-        pressure: data.main.pressure,
-        temperature: data.main.temp,
-        date: getDate(),
-    }
+  const weatherData = {
+    location: data.name,
+    description: translateWeather(data.weather[0].main),
+    humidity: data.main.humidity,
+    pressure: data.main.pressure,
+    temperature: Math.round(data.main.temp),
+    date: getDate()
+  };
 
-    // función para que recorra las keys y nos muestre los datos en el html
-    Object.keys(weatherData).forEach( key => {
-        document.getElementById(key).textContent = weatherData[key];
+  Object.keys(weatherData).forEach(key => {
+    document.getElementById(key).textContent = weatherData[key];
+  });
 
-    })
+  setWeatherIcon(data.weather[0].main);
+  setBackgroundByWeather(data.weather[0].main);
 
-    cleanUp();
-    
-}
+  cleanUp();
+};
 
-    //función para limpiar
-    const cleanUp = () => {
-        let container = document.getElementById('container');
-        let loader = document.getElementById('loader');
+const translateWeather = condition => {
+  switch (condition.toLowerCase()) {
+    case 'clear': return 'Soleado';
+    case 'clouds': return 'Nublado';
+    case 'rain': return 'Lluvioso';
+    case 'drizzle': return 'Llovizna';
+    case 'thunderstorm': return 'Tormenta';
+    case 'snow': return 'Nevando';
+    case 'mist':
+    case 'fog': return 'Niebla';
+    default: return condition;
+  }
+};
 
-        loader.style.display = 'none';
-        container.style.display = 'flex';
-        
-    }
+const setWeatherIcon = condition => {
+  const icon = new Skycons({ color: "black" });
+  let iconType = "CLEAR_DAY";
 
-    // función para obtener la fecha actual
-    const getDate = () => {
-        let date = new Date ();
-        return `${date.getDate()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${date.getFullYear()}`;  // .slice lo que hace es que si ya tiene dos caracteres lo deja así y sino le añade el 0
-    }
+  switch (condition.toLowerCase()) {
+    case "clouds":
+      iconType = "PARTLY_CLOUDY_DAY";
+      break;
+    case "rain":
+      iconType = "RAIN";
+      break;
+    case "snow":
+      iconType = "SNOW";
+      break;
+    case "clear":
+      iconType = "CLEAR_DAY";
+      break;
+    case "thunderstorm":
+      iconType = "SLEET";
+      break;
+    case "drizzle":
+      iconType = "SLEET";
+      break;
+    case "mist":
+    case "fog":
+      iconType = "FOG";
+      break;
+    default:
+      iconType = "CLOUDY";
+      break;
+  }
 
-//función para obtener la geolocalización del usuario
+  icon.set("weather-icon", Skycons[iconType]);
+  icon.play();
+};
+
+const cleanUp = () => {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('container').style.display = 'flex';
+};
+
+const getDate = () => {
+  const date = new Date();
+  return `${date.getDate()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${date.getFullYear()}`;
+};
+
+const setBackgroundByWeather = condition => {
+  const body = document.body;
+
+  switch (condition.toLowerCase()) {
+    case 'clear':
+      body.style.background = 'linear-gradient(to top, #a2d4f7, #ffffff)'; // Fondo suave azul-blanco (sin naranja)
+      break;
+    case 'clouds':
+      body.style.background = 'linear-gradient(to top, #d7d2cc, #304352)';
+      break;
+    case 'rain':
+    case 'drizzle':
+      body.style.background = 'linear-gradient(to top, #4e54c8, #8f94fb)';
+      break;
+    case 'thunderstorm':
+      body.style.background = 'linear-gradient(to top, #373B44, #4286f4)';
+      break;
+    case 'snow':
+      body.style.background = 'linear-gradient(to top, #e6dada, #274046)';
+      break;
+    case 'mist':
+    case 'fog':
+      body.style.background = 'linear-gradient(to top, #3e5151, #decba4)';
+      break;
+    default:
+      body.style.background = 'linear-gradient(to top, #a2d4f7, #ffffff)';
+  }
+};
+
 const onLoad = () => {
-    navigator.geolocation.getCurrentPosition(fetchData);
-}
+  navigator.geolocation.getCurrentPosition(fetchData);
+};

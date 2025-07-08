@@ -1,59 +1,30 @@
 <!DOCTYPE html>
-<html >
-            <head>
-                <meta charset="UTF-8">
-                <title>Clima</title>
-                <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-                <link href="style.css" rel="stylesheet" type="text/css">
-            </head> 
-            
- <body onload="onLoad()">
-      
-   
-    <div id="container">
-        
-         <!--BLOQUE INFO LUGAR, FECHA Y DESCRIPCIÓN-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Clima Animado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body onload="onLoad()">
+  <div id="container">
+    <div class="weather-card">
+      <canvas id="weather-icon" width="128" height="128"></canvas>
+      <div id="location" class="location"></div>
+      <div id="date" class="date"></div>
+      <div id="description" class="description"></div>
 
-        
-        <div class="block"> 
-                <div id="location"></div>
-                <div id="date"></div>
-                <div id="description"></div> 
-            </div>
-
-         
-
-            <!--BLOQUE INFO TEMPERATURA, PRESIÓN Y HUMEDAD-->
-         
-            <div class="block"> 
-    
-                 <div class="information-container">
-                    Temperatura
-                     <div class="info" id="temperature"></div>
-                </div>
-
-                 <div class="information-container">
-                    Presión
-                     <div class="info" id="pressure"></div>
-                    
-                </div>
-
-                <div class="information-container">
-                    Humedad
-                     <div class="info" id="humidity"></div>
-
-                </di
-               
-               
-               
-            </div>
-        
+      <div class="info">
+        <div>🌡️ Temperatura: <span id="temperature"></span>°C</div>
+        <div>💧 Humedad: <span id="humidity"></span>%</div>
+        <div>🌬️ Presión: <span id="pressure"></span> hPa</div>
+      </div>
     </div>
-                
+  </div>
 
-    
-    <span id="loader" class="loader">Cargando...</span>
-    <script src="script.js"></script>
- </body>
+  <span id="loader" class="loader">Cargando...</span>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.js"></script>
+  <script src="script.js"></script>
+</body>
 </html>
