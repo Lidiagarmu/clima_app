@@ -41,29 +41,29 @@ body, html {
 }
 
 .temperature {
-  font-size: 120px; /*antes 48*/
+  font-size: 100px; 
   font-weight: bold;
 }
 
 .description {
-  font-size: 40px; /*antes 20*/
+  font-size: 40px;
   margin-top: 5px;
 }
 
 .date {
-  font-size: 24px; /*antes 14*/
+  font-size: 24px; 
   color: #666;
   margin-top: 4px;
 }
 
 .weather-icon {
-  width: 180px; /*antes 100*/
+  width: 180px; 
   height: 100px;
   flex-shrink: 0;
 }
 
 .location {
-  font-size: 48px; /*antes 26*/
+  font-size: 48px;
   font-weight: 600;
   text-align: center;
 }
@@ -74,7 +74,7 @@ body, html {
   background-color: #f0f0f0;
   padding: 10px 0;
   border-radius: 20px;
-  font-size: 32px; /*antes 16*/
+  font-size: 32px; 
   gap: 20px;
 }
 
