@@ -14,7 +14,7 @@ const setWeatherData = data => {
     description: translateWeather(data.weather[0].main),
     humidity: data.main.humidity,
     pressure: data.main.pressure,
-    temperature: Math.round(data.main.temp),
+    temperature: Math.round(data.main.temp)  + "°C",
     date: getDate()
   };
 
@@ -74,7 +74,7 @@ const setWeatherIcon = condition => {
       break;
   }
 
-  icon.set("weather-icon", Skycons[iconType]);
+  icon.set("weather-icon", iconType);
   icon.play();
 };
 

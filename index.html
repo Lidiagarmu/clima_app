@@ -7,20 +7,27 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body onload="onLoad()">
-  <div id="container">
-    <div class="weather-card">
-      <canvas id="weather-icon" width="128" height="128"></canvas>
-      <div id="location" class="location"></div>
-      <div id="date" class="date"></div>
-      <div id="description" class="description"></div>
+  
 
-      <div class="info">
-        <div>🌡️ Temperatura: <span id="temperature"></span>°C</div>
-        <div>💧 Humedad: <span id="humidity"></span>%</div>
-        <div>🌬️ Presión: <span id="pressure"></span> hPa</div>
-      </div>
-    </div>
+  <div class="weather-card">
+  <div class="top-section">
+        <div class="left-info">
+          <div id="temperature" class="temperature">--°C</div>
+          <div id="description" class="description">Descripción</div>
+          <div id="date" class="date">Fecha</div>
+        </div>
+      
+        <canvas id="weather-icon" width="128" height="128" class="weather-icon"></canvas>
   </div>
+
+  <div id="location" class="location">Ubicación</div>
+
+  <div class="info-bar">
+        <div>💧 <span id="humidity">--</span>% Humedad</div>
+        <div>🌬️ <span id="pressure">--</span> Presión</div>
+  </div>
+</div>
+
 
   <span id="loader" class="loader">Cargando...</span>
 
