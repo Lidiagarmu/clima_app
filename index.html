@@ -6,8 +6,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
+
 <body onload="onLoad()">
   
+    <!-- Loader (solo icono animado) -->
+  <div id="loader" class="loader"></div>
+
+  <!-- Contenedor principal oculto al inicio -->
+  <div id="container" style="display: none;">
 
   <div class="weather-card">
   <div class="top-section">
@@ -27,9 +34,9 @@
         <div>🌬️ <span id="pressure">--</span> Presión</div>
   </div>
 </div>
+</div>
 
 
-  <span id="loader" class="loader">Cargando...</span>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.js"></script>
   <script src="script.js"></script>
